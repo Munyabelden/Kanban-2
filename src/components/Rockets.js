@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchRockets } from "../redux/rockets/RocketSlice";
+import { fetchRockets  } from "../redux/rockets/RocketSlice";
 
 const Rockets = () => {
   const [isReserved, setIsReserved] = useState(false);

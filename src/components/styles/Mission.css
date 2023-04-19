@@ -1,0 +1,19 @@
+tr:nth-child(even) {
+  background: rgb(222, 224, 224);
+}
+
+.join-button {
+  background: none;
+  border: 1px solid rgb(87, 88, 89);
+  color: rgb(87, 88, 89);
+  padding: 4px 8px;
+  font-size: 15px;
+}
+
+.active-button {
+  background: none;
+  border: 1px solid rgb(198, 55, 55);
+  color: rgb(198, 68, 54);
+  padding: 4px 8px;
+  font-size: 15px;
+}
