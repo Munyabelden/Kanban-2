@@ -31,7 +31,7 @@ const Mission = () => {
           {missions.map((mission) => {
           return (
             <tr key={mission.mission_id}>
-              <td>{mission.mission_name}</td>
+              <td><h3>{mission.mission_name}</h3></td>
               <td>{mission.description}</td>
               <td>{mission.joined ? "Active Member" : "Not A Member"}</td>
               <td>
