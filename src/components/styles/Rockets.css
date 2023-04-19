@@ -1,0 +1,7 @@
+.rocket{
+    display: flex;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+}
