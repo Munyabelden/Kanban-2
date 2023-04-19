@@ -10,6 +10,9 @@ p {
 }
 h3 {
   margin: 2px 0 10px 0;
+  font-size: 28px;
+  font-weight: 500;
+  color: #151515;
 
 }
 .rocket-img {
