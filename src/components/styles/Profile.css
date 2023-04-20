@@ -1,0 +1,16 @@
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .missions-display{
+    width: 45%;
+    order: 1;
+  }
+  
+  .rockets-display {
+    width: 45%;
+    order: 2;
+  }
+  
