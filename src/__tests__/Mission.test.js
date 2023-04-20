@@ -1,9 +1,9 @@
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Mission from '../components/Mission';
-import { fetchMissions, joinMission, leaveMission } from '../redux/missions/MissionSlice';
+import { fetchMissions } from '../redux/missions/MissionSlice';
 
 const mockStore = configureMockStore([thunk]);
 
