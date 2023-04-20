@@ -1,0 +1,71 @@
+div {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+tbody {
+
+}
+
+table {
+  margin: 20px;
+  border: 1px solid rgb(99, 101, 104);
+  border-spacing: 0;
+}
+
+th:not(:last-child) {
+  border-right: 0.5px solid rgb(99, 101, 104);
+}
+
+th {
+  padding: 6px;
+}
+
+tr:nth-child(even) {
+  background: rgb(222, 224, 224);
+}
+
+tbody tr {
+  margin: -10px;
+}
+
+td {
+  border: 0.5px solid rgb(99, 101, 104);
+  margin: -5px;
+  padding: 15px;
+}
+
+.join-button {
+  background: none;
+  border: 1px solid rgb(87, 88, 89);
+  color: rgb(87, 88, 89);
+  padding: 4px 8px;
+  font-size: 15px;
+}
+
+.active-button {
+  background: none;
+  border: 1px solid rgb(198, 55, 55);
+  color: rgb(198, 68, 54);
+  padding: 4px 8px;
+  font-size: 15px;
+}
+
+.active-span {
+  background: rgb(37, 118, 224);
+  border: none;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.none-active {
+  background: rgb(79, 83, 88);
+  border: none;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #fff;
+}
