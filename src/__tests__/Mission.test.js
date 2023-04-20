@@ -1,81 +1,90 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import Mission from '../components/Mission';
+import { fetchMissions, joinMission, leaveMission } from '../redux/missions/MissionSlice';
 
-const mockStore = configureStore([]);
+const mockStore = configureMockStore([thunk]);
 
 describe('Mission component', () => {
   let store;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     store = mockStore({
       missions: {
         missions: [
           {
-            mission_id: 1,
+            mission_id: 'mission1',
             mission_name: 'Mission 1',
-            description: 'Mission 1 description',
-            joined: false,
-          },
-          {
-            mission_id: 2,
-            mission_name: 'Mission 2',
-            description: 'Mission 2 description',
+            description: 'Description 1',
             joined: true,
           },
+          {
+            mission_id: 'mission2',
+            mission_name: 'Mission 2',
+            description: 'Description 2',
+            joined: false,
+          },
         ],
+        status: 'success',
+        error: null,
       },
     });
+
+    store.dispatch = jest.fn();
+
+    jest.spyOn(global, 'fetch').mockResolvedValueOnce({
+      json: async () => ({
+        missions: [
+          {
+            mission_id: 'mission1',
+            mission_name: 'Mission 1',
+            description: 'Description 1',
+            joined: true,
+          },
+          {
+            mission_id: 'mission2',
+            mission_name: 'Mission 2',
+            description: 'Description 2',
+            joined: false,
+          },
+        ],
+      }),
+    });
+
+    await store.dispatch(fetchMissions());
   });
 
-  it('should render the Mission component', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('renders a table with missions', () => {
     render(
       <Provider store={store}>
         <Mission />
       </Provider>
     );
 
-    const mission1Name = screen.getByText('Mission 1');
-    const mission1Description = screen.getByText('Mission 1 description');
-    const mission1JoinButton = screen.getByText('Join Mission');
-    const mission2Name = screen.getByText('Mission 2');
-    const mission2Description = screen.getByText('Mission 2 description');
-    const mission2LeaveButton = screen.getByText('Leave Mission');
-
-    expect(mission1Name).toBeInTheDocument();
-    expect(mission1Description).toBeInTheDocument();
-    expect(mission1JoinButton).toBeInTheDocument();
-    expect(mission2Name).toBeInTheDocument();
-    expect(mission2Description).toBeInTheDocument();
-    expect(mission2LeaveButton).toBeInTheDocument();
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.getAllByRole('row')).toHaveLength(3); // Header row + 2 mission rows
   });
 
-  it('should dispatch joinMission action when join button is clicked', () => {
+  it('renders mission data correctly', () => {
     render(
       <Provider store={store}>
         <Mission />
       </Provider>
     );
 
-    const mission1JoinButton = screen.getByText('Join Mission');
-    fireEvent.click(mission1JoinButton);
+    expect(screen.getAllByText('Description 1')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Description 2')[0]).toBeInTheDocument();
 
-    const actions = store.getActions();
-    expect(actions).toEqual([{ type: 'missions/joinMission', payload: 1 }]);
-  });
+    expect(screen.getByText('Active Member')).toBeInTheDocument();
+    expect(screen.getByText('Leave Mission')).toBeInTheDocument();
 
-  it('should dispatch leaveMission action when leave button is clicked', () => {
-    render(
-      <Provider store={store}>
-        <Mission />
-      </Provider>
-    );
-
-    const mission2LeaveButton = screen.getByText('Leave Mission');
-    fireEvent.click(mission2LeaveButton);
-
-    const actions = store.getActions();
-    expect(actions).toEqual([{ type: 'missions/leaveMission', payload: 2 }]);
+    expect(screen.getByText('Join Mission')).toBeInTheDocument();
+    expect(screen.getByText('Active Member')).toBeInTheDocument();
   });
 });

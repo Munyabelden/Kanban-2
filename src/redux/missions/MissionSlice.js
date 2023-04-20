@@ -6,8 +6,6 @@ const initialState = {
   missions: [],
   status: 'idle',
   joined: false,
-  isActive: false,
-  isMember: false,
   error: null,
 };
 
@@ -51,9 +49,6 @@ const missionSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchMissions.pending, (state) => {
-        state.status = 'loading';
-      })
       .addCase(fetchMissions.fulfilled, (state, action) => {
         state.status = 'success';
         state.missions = action.payload;
