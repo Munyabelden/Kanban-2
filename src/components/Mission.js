@@ -32,8 +32,8 @@ const Mission = () => {
           return (
             <tr key={mission.mission_id}>
               <td><h3>{mission.mission_name}</h3></td>
-              <td>{mission.description}</td>
-              <td>{mission.joined ? "Active Member" : "Not A Member"}</td>
+              <td className="describe">{mission.description}</td>
+              <td>{mission.joined ? <button className="active-span">Active Member</button> : <button className="none-active">Not A Member</button>}</td>
               <td>
                 {mission.joined ? (
                   <button type="button" onClick={() => handleLeaveMember(mission.mission_id)} className="active-button">
