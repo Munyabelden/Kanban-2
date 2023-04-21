@@ -5,35 +5,47 @@ nav{
   padding: 10px;
   border-bottom: 2px solid #cccccc;
 }
+
+.navigation li a.active {
+  text-decoration: underline;
+}
+
 img {
   height: 80px;
   width: 80px;
 }
+
 h1{
   margin: 20px 30px;
   font-size: 28px;
   font-weight: 600;
 }
+
 .display-logo{
   display: flex;
 }
+
 .navigation{
   display: flex;
   flex-direction: row;
 }
+
 a{
   text-decoration: none;
   color: #0290ff;
   font-size: 18px;
   font-weight: 400;
 }
+
 .navigation li{
   list-style: none;
   margin:10px;
 }
+
 a:hover{
   text-decoration: underline;
 }
+
 .mission{
   border-right: 2px solid #000000;
   padding-right: 20px;

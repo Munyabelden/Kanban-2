@@ -1,0 +1,28 @@
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 60px;
+}
+
+.missions-display {
+  width: 45%;
+  order: 1;
+}
+
+.rockets-display {
+  width: 45%;
+  order: 2;
+}
+.mission-name{
+  border: 1px solid #cccccc;
+  font-size: 28px;
+  padding: 15px 10px 40px 10px;
+  color: #141414;
+}
+.rocket-name{
+  border: 1px solid #cccccc;
+  font-size: 28px;
+  padding: 15px 10px 40px 10px;
+  color: #141414;
+}
