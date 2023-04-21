@@ -135,6 +135,6 @@ We would like to thank the Microverse for thier support.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/Munyabelden/Kanban-2/blob/main/LICENSE) licensed.
+This project is [MIT](https://github.com/Munyabelden/Kanban-2/blob/develop/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
